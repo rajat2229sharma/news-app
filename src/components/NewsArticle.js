@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -17,32 +18,37 @@ const useStyles = makeStyles({
     minHeight: 108,
     fontSize: 17,
   },
+  mainCard: {
+    textDecoration: 'none',
+  },
 });
 export default function NewsArticle({ data }) {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
-      <CardActionArea target="_blank" href={data.story_url}>
-        <CardContent>
-          <Typography className={classes.title} gutterBottom variant="h6" component="h6">
-            {data.story_title}
-          </Typography>
-          <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-            {data.author}
-          </Typography>
-          <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-            {data.objectID}
-          </Typography>
-          <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
-            {data.created_at}
-          </Typography>
-        </CardContent>
-        <CardActions>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-      </CardActionArea>
-    </Card>
+    <Link className={classes.mainCard} to={`newspage/${data.objectID}`}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardContent>
+            <Typography className={classes.title} gutterBottom variant="h6" component="h6">
+              {data.title}
+            </Typography>
+            <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
+              {data.author}
+            </Typography>
+            <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
+              {data.objectID}
+            </Typography>
+            <Typography className={classes.text} variant="body2" color="textSecondary" component="p">
+              {data.created_at}
+            </Typography>
+          </CardContent>
+          <CardActions>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+        </CardActionArea>
+      </Card>
+    </Link>
   );
 }
