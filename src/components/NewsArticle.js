@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 export default function NewsArticle({ data }) {
   const classes = useStyles();
   return (
-    <Link className={classes.mainCard} to={`newspage/${data.objectID}`}>
+    // <Link className={classes.mainCard} to={`newspage/${data.objectID}`}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardContent>
@@ -49,6 +49,6 @@ export default function NewsArticle({ data }) {
         </CardActions>
         </CardActionArea>
       </Card>
-    </Link>
+    // </Link>
   );
 }
